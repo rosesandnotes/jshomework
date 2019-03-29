@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>JavaScript</title>
+    </head>
+    <body>
+        <h1>JavaScript</h1>
+        <script type="text/JavaScript">
+            
+            var house = {
+                areas: [{
+                      livingRoom: {
+                          items: ['tv','sofa']
+                      },
+                      bedroomOne: {
+                          items: ['bed','washing machine'],
+                          windows: 3
+                      },
+                      bedroomTwo:{
+                          items: ['bed','bed','desk'],
+                          windows: 4
+                      },
+                      kitchen:{
+                          items: ['fridge','broken chair']
+                      }
+                }],
+                garden: [true, 'Red Rose'],
+                garage: {
+                  car: {
+                    color: 'red',
+                    wheels: 4,
+                    honk: ()=>{alert("Beep")}
+                    }
+                }
+              }
+            
+              
+              // Find total number of areas in the house
+              
+              let areaCount = Object.keys(house.areas[0]);
+              console.log("Number of Areas:", areaCount.length);
+        
+
+            // Add a dining table to the living room
+
+            house.areas[0].livingRoom.items.push("dining table");
+            console.log(" Added dining table to Living Room:", house);
+
+
+            // Add a stove to the kitchen
+
+              house.areas[0].kitchen.items.push("stove");
+              console.log("Added stove to kitchen:", house);
+
+              
+              // Remove the washing machine from bedroomOne
+              house.areas[0].bedroomOne.items.pop();
+              console.log("Removed washing machine from bedroomOne:", house);
+
+              // Find the total number of beds in all rooms
+
+              let rooms = Object.values(house.areas[0]);
+              let beds;
+              let bedCtr = 0;
+              for(let i = 0; i < rooms.length; i++){
+                  beds = rooms[i].items.filter(item => item == "bed");
+                  bedCtr += beds.length;
+              }
+             console.log("Total Beds:", bedCtr);
+
+              // Change the color of the car to blue
+              house.garage.car.color = "blue";
+
+              console.log("Change Color of Car to Blue:", house);
+              
+              // Add a another car to the garage with a honk function
+
+              house.garage.car2 = {
+                  honk: ()=>{alert("Beep")}
+              };
+
+              console.log("Added New Car:", house);
+
+
+            // Make the new car honk
+
+              house.garage.car2.honk();
+
+            // Change the 'broken chair' in the kitchen to 'new chair'
+
+              house.areas[0].kitchen.items.splice(1,1,"new chair");
+
+              console.log("Replaced broken chair:", house);
+
+            // If the house has a garden, console.log the name of the flower
+
+            if(house.garden[0] == true){
+                console.log("Flower:", house.garden[1]);
+            }
+                
+
+        </script>
+    </body>
+</html>
